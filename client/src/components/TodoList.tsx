@@ -21,6 +21,8 @@ export default function TodoList() {
         if(nextID && todoRef.current) {
         dispatch(create({id: nextID, text: todoRef.current.value}));
         todoRef.current.value = "";
+
+        /* [TODO] 여기서 post 요청해보기!!! */
         }
     };
 

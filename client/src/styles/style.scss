@@ -2,11 +2,12 @@ main {
     .ListContainer {
         .TodoList {
             padding: 2%;
-            border: 2px dashed #417aff;
+            border: 3px solid #417aff;
             background-color: aliceblue;
             color: #417aff;
+            box-shadow: 5px 5px 5px gray;
             button {
-                border: 2px solid #417aff;
+                border: 3px solid #417aff;
                 border-radius: 30%;
                 background-color: aliceblue;
                 color: #417aff;
@@ -21,8 +22,9 @@ main {
         .DoneList {
             padding: 2%;
             background-color: rgb(255, 235, 243);
-            border: 2px dashed palevioletred ;
+            border: 3px solid palevioletred ;
             color: palevioletred;
+            box-shadow: 5px 5px 5px gray;
             ul {
                 color: black;
             }
