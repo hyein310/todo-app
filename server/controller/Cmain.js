@@ -29,7 +29,7 @@ exports.postTodo = async(req, res) => {
     } */
     try{
         // req.body = {text: "~~~~~~~~~"}
-        const {text} = req.body;
+        const { text } = req.body;
         await Todo.create({
             text,
         });

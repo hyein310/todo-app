@@ -11,12 +11,12 @@ router.get("/todos", controlloer.getTodos);
 
 // POST /api-server/todo
 // 새로운 Todo 만들기 >> {isSuccess: true}
-router.post("/todo", controlloer.postTodo);
+router.post("/todos", controlloer.postTodo);
 
 // -------- 밑에는 숙제
 
 // PATCH /api-server/todo/:todoId
-// 특정 Todo(todoId)의 done 값 수정 (할 일 -> 다한 일) + (다한 일 + 할 일)
+// 특정 Todo(todoId)의 done 값 수정 (할 일 -> 다한 일) + (다한 일 -> 할 일)
 
 // DELETE /api-server/todo/:todoId
 // 특정 Todo 삭제

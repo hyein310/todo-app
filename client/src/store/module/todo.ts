@@ -49,7 +49,7 @@ export function todoReducer(state=initialState, action: Action) {
             return {
                 ...state, 
                 list: action.data,
-                nextID: action.data.length === 0, 1: action.data[action.data.length-1].id + 1,
+                nextID: action.data.length === 0? 1: action.data[action.data.length-1].id + 1,
             }
         case CREATE:
             if(action.payload.text.trim() === "") return state;
