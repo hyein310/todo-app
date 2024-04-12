@@ -20,5 +20,6 @@ router.post("/todos", controlloer.postTodo);
 
 // DELETE /api-server/todo/:todoId
 // 특정 Todo 삭제
+router.delete("/todo/:todoId", controlloer.deleteTodo);
 
 module.exports = router;

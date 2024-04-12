@@ -14,7 +14,6 @@ export default function TodoList() {
     const dispatch = useDispatch();
     const todoRef = useRef<HTMLInputElement>(null);
     const nextID = useSelector((state: ReduxState)=>state.todo.nextID); 
-    const [addTodo, setAddTodo] = useState();
 
     async function createTodo() {
         // dispatch({type:"todo/CREATE", payload:{id:3, text: todoRef.current.value}});
@@ -27,9 +26,8 @@ export default function TodoList() {
         /* [TODO] 여기서 post 요청해보기!!! */
         // 서버로 보내줘야함
         try {
-            console.log(nextID)
             // 조건을 현재 값이 공백이 아니고 존재하며, nextID가 들어 올 때만 실행하게 함
-            if (todoRef.current &&nextID && todoRef.current.value.trim() !== "") {
+            if (todoRef.current && nextID && todoRef.current.value.trim() !== "") {
                     const text = todoRef.current.value;
                     const res = await axios.post(`${process.env.REACT_APP_API_SERVER}/todos`, { text });
                     console.log(res.data);

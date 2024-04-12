@@ -1,4 +1,6 @@
+const { text } = require("express");
 const { Todo } = require("../models");
+const { where } = require("sequelize");
 
 // test용 api
 exports.getIndex = (req, res) => {
@@ -40,3 +42,19 @@ exports.postTodo = async(req, res) => {
         res.status(500).send("SERVER ERROR!, 관리자에게 문의바랍니다.")
     }
 };
+
+exports.deleteTodo = async(req, res) => {
+    console.log(req.body);
+    const { id } = req.body;
+    
+    try {
+        await Todo.destroy({
+            where: {id: id}
+        });
+        res.send({isDeleted: true});
+    }
+    catch(err) {
+        console.log("server error!", err);
+        res.status(500).send("SERVER ERROR!, 관리자에게 문의바랍니다.")
+    }
+}

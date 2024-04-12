@@ -9,6 +9,7 @@ initialState["nextID"] = count;
 const INIT = "todo/INIT" as const;  // get 요청을 보내서 정보를 전달 받아서 initailState에 저장
 const CREATE = "todo/CREATE" as const;  // as 형변환, string형이 아닌 그 값 "todo/CREATE"만 올 수 있음
 const DONE = "todo/DONE" as const;
+const DELETE = "todo/DELETE" as const;
 
 export const init = (data: Todo[]) => ({
     type: INIT,
@@ -22,12 +23,11 @@ export const done = (id: number) => ({
     type:DONE, // string
     id, // number 
 });
+export const del = (id: number) => ({
+    type: DELETE,  // string
+    id, // number
+});
 
-// interface Action {
-//     type: string;
-//     id?: number;
-//     payload?: {id: number, text: string};
-// }
 
 interface Init {
     type: typeof INIT;
@@ -41,7 +41,12 @@ interface Done {
     type: typeof DONE;
     id: number;
 }
-type Action = Create | Done | Init;
+interface Delete {
+    type: typeof DELETE;
+    id: number;
+}
+
+type Action = Create | Done | Init | Delete;
 
 export function todoReducer(state=initialState, action: Action) {
     switch (action.type) {
@@ -84,6 +89,11 @@ export function todoReducer(state=initialState, action: Action) {
                         return li;
                     }
                 }),
+            };
+        case DELETE:
+            return {
+                ...state,
+                list: state.list.filter((li) => li.id !== action.id),
             };
         default:
             return state;
