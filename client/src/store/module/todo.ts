@@ -46,6 +46,7 @@ interface Delete {
     id: number;
 }
 
+
 type Action = Create | Done | Init | Delete;
 
 export function todoReducer(state=initialState, action: Action) {
@@ -90,11 +91,11 @@ export function todoReducer(state=initialState, action: Action) {
                     }
                 }),
             };
-        case DELETE:
-            return {
-                ...state,
-                list: state.list.filter((li) => li.id !== action.id),
-            };
+            case DELETE:
+                return {
+                  ...state,
+                  list: state.list.filter((li) => li.id !== action.id),
+                };
         default:
             return state;
     }

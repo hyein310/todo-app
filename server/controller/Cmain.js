@@ -43,18 +43,18 @@ exports.postTodo = async(req, res) => {
     }
 };
 
-exports.deleteTodo = async(req, res) => {
-    console.log(req.body);
-    const { id } = req.body;
-    
+
+exports.deleteTodo = async (req, res) => {
     try {
-        await Todo.destroy({
-            where: {id: id}
-        });
-        res.send({isDeleted: true});
+      const { todoId } = req.params;
+      // console.log(todoId);
+      const isDeleted = await Todo.destroy({ where: { id: todoId } });
+      // console.log(isDeleted);
+      isDeleted
+        ? res.status(200).send({ isSuccess: true })
+        : res.status(404).send({ isSuccess: false }); //잘못된 todoId 보낼 경우
+    } catch (err) {
+      console.log("server err!", err);
+      res.status(500).send("SERVER ERROR! 관리자에게 문의하세요");
     }
-    catch(err) {
-        console.log("server error!", err);
-        res.status(500).send("SERVER ERROR!, 관리자에게 문의바랍니다.")
-    }
-}
+  };

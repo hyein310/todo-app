@@ -28,17 +28,14 @@ export default function DoneList() {
             <h2>⭐ 완료한 일</h2>
             {doneList.length === 0? (<p>다한게 없어용..</p>) : (
             <ul>
-                {doneList.map((done)=> {
-                    return (
-                        <li key={done.id}>
-                            <span>{done.text}</span>
-                            &nbsp;&nbsp;
-                            <span>
-                                <FontAwesomeIcon icon={faTrash} onClick={() => deleteTodo(done.id)}/>
-                            </span>
-                        </li>
-                    )
-                })}
+                {doneList.map((el) => (
+            <li key={el.id}>
+              <span>{el.text}</span>
+              <span onClick={() => deleteTodo(el.id)}>
+                <FontAwesomeIcon icon={faTrash} />
+              </span>
+            </li>
+          ))}
             </ul>    
             )}
 
